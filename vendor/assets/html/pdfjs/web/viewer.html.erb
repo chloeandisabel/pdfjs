@@ -25,21 +25,22 @@ http://sourceforge.net/adobe/cmap/wiki/License/
     <title>PDF.js viewer</title>
 
 
-    <link rel="stylesheet" href="viewer.css"/>
-
-    <script src="compatibility.js"></script>
-
+    <%= stylesheet_link_tag('pdfjs/web/viewer.css') %>
+    <%= javascript_include_tag('pdfjs/web/compatibility') %>
 
 
 <!-- This snippet is used in production (included from viewer.html) -->
-<link rel="resource" type="application/l10n" href="locale/locale.properties"/>
-<script src="l10n.js"></script>
-<script src="../build/pdf.js"></script>
+<link rel="resource" type="application/l10n" href=<%= asset_path('pdfjs/web/locale/locale.properties')%> />
 
+    <!--- blabh albhalsdf -->
+  <%= javascript_include_tag('pdfjs/web/l10n') %>
+    <%= javascript_include_tag('pdfjs/build/pdf') %>
+    <%= javascript_include_tag('pdfjs/web/debugger.js') %>
+    <%= javascript_include_tag('pdfjs/web/viewer.js') %>
 
-
-    <script src="debugger.js"></script>
-    <script src="viewer.js"></script>
+    <script>
+      PDFJS.workerSrc = "<%= asset_path('pdfjs/build/pdf.worker') %>";
+    </script>
 
   </head>
 
